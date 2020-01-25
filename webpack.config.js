@@ -2,6 +2,8 @@
 // path模块是内置模块,利用内置模块获取当前结构路径
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// 需要写成对象的模式
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   // 指定路口文件
   entry: './src/js/index.js',
@@ -10,13 +12,15 @@ module.exports = {
     // 获得当前的目录
     path: path.resolve(__dirname, 'dist'),
     // 打包生成的文件
-    filename: 'bundle.js'
+    filename: 'js/bundle.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html"
-    })
+    }),
+    // 因为传参的原因导致的错误
+    new CleanWebpackPlugin()
   ],
   module: {
     rules: [{
@@ -37,6 +41,22 @@ module.exports = {
         compact: false,/* 表示不压缩 */
         // 2017需要专门生成一个配置文件,把react配置文件剥离出去
         presets: ['es2015', 'react']/* 需要编译的是react */
+      }
+    },
+    {
+      // 图片打包
+      test: /\.(jpg|png|gif)$/,
+      loader: 'url-loader',
+      options: {
+        limit: 100000,
+        name: 'img/[name]_[hash].[ext]'
+      }
+    },
+    {
+      test: /\.(eot|svg|ttf|woff|woff2)$/,
+      loader: 'file-loader',
+      options: {
+        name: 'fonts/[name]_[hash].[ext]'
       }
     }]
   },

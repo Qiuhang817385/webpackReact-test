@@ -1,0 +1,36 @@
+@value:100px;
+body{
+	margin:0px;
+	padding: 0px;
+	background: url(../img/bg.jpg);
+}
+div{
+	width:@value;
+	height:@value;
+	background:#ff0;
+	color:#fff;
+}
+.roboto-font() {  
+    @font-face {
+    font-family: 'icomoon';
+    src:    url('../fonts/icomoon.eot?dprft4');
+    src:    url('../fonts/icomoon.eot?dprft4#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?dprft4') format('truetype'),
+        url('../fonts/icomoon.woff?dprft4') format('woff'),
+        url('../fonts/icomoon.svg?dprft4#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+   }
+}  
+.roboto-font-one() {  
+    .roboto-font();  
+}   
+.roboto-font-one();
+  
+span{
+	font-family:'icomoon';
+	font-size:30px;
+}
+span:before{
+	content:"\e900";
+}
