@@ -38,3 +38,22 @@
 
 map+foreach
 
+
+
+### React自己推出的API
+
+```js
+ React.Children.map(children, (child, index) => {
+      // 想要拿到displayName，需要做类型断言
+      // const childElement = child as React.FunctionComponentElement;
+    })
+```
+
+```js
+添加属性
+MenuItem.displayName = 'MenuItem'
+```
+
+自己提供的API 都在这里面啊?
+
+![image-20200613101630521](C:/Users/Artificial/AppData/Roaming/Typora/typora-user-images/image-20200613101630521.png)

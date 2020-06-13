@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react'
 import classnames from 'classnames'
+import { MenuItemProps } from './MenuItem'
 
 type SelectCallback = (selectedIndex: number) => void
 
@@ -44,17 +45,29 @@ const Menu: React.FC<MenuProps> = (props) => {
     currentActiveIndex: currentActive ? currentActive : 0,
     onClick: handleClick,
   }
+  // 对子类型进行判断.
   const renderChildren = () => {
     return React.Children.map(children, (child, index) => {
       // 想要拿到displayName，需要做类型断言
-      // const childElement = child as React.FunctionComponentElement;
+      const childElement = child as React.FunctionComponentElement<
+        MenuItemProps
+      >
+      // 现在可以有代码提示,拿到里面的type了
+      const { displayName } = childElement.type
+      if (displayName === 'MenuItem') {
+        return child
+      } else {
+        console.error(
+          'Warring,Menu has a child witch is not a MenuItem component'
+        )
+      }
     })
   }
 
   return (
     <ul className={classes} style={style} data-testid="test-menu">
       <MenuContext.Provider value={passedContext}>
-        {children}
+        {renderChildren()}
       </MenuContext.Provider>
     </ul>
   )
