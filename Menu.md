@@ -42,6 +42,8 @@ map+foreach
 
 ### React自己推出的API
 
+1.进行组件类型的判断
+
 ```js
  React.Children.map(children, (child, index) => {
       // 想要拿到displayName，需要做类型断言
@@ -57,3 +59,9 @@ MenuItem.displayName = 'MenuItem'
 自己提供的API 都在这里面啊?
 
 ![image-20200613101630521](C:/Users/Artificial/AppData/Roaming/Typora/typora-user-images/image-20200613101630521.png)
+
+
+
+2.为组件附加默认index
+
+![image-20200614165758711](C:/Users/Artificial/AppData/Roaming/Typora/typora-user-images/image-20200614165758711.png)

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import classnames from 'classnames'
 import { MenuContext } from './Menu'
 export interface MenuItemProps {
-  index?: number
+  index?: string
   disabled?: boolean
   className?: string
   style?: React.CSSProperties
@@ -13,7 +13,7 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
    * 传递过来的context
    */
   const context = useContext(MenuContext)
-
+  // console.log('context.currentActiveIndex', context.currentActiveIndex)
   const classes = classnames('menu-item', className, {
     'is-disabled': disabled,
     'is-active': context.currentActiveIndex === index, //这个index哪里来的？  自己本身默认的属性
@@ -23,9 +23,11 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
    */
   const handleClick = () => {
     // 在这里就可以控制disabled和active不能同时显示出来
-    if (context.onClick && !disabled) {
-      let cI = index ? index : 0
-      context.onClick(cI)
+    if (context.onClick && !disabled && typeof index === 'string') {
+      // let cI = index ? index : 0
+      // context.onClick(cI)
+      console.log('index', index)
+      context.onClick(index)
     }
   }
 
