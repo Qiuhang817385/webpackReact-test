@@ -31,12 +31,19 @@ export interface UploadProps {
   onError?: (err: any, file: File) => void
   onChange?: (file: File) => void
   onRemove?: (file: UploadFile) => void
+  // 添加自定义header
   headers?: { [key: string]: any }
+  // 添加自定义name
   name?: string
+  // 添加自定义data,比如token
   data?: { [key: string]: any }
+  // 添加自定义是否携带cookie
   withCredentials?: boolean
+  // 添加自定义属性accept接受文件类型
   accept?: string
+  // 添加自定义属性多选
   multiple?: boolean
+  // 添加自定义方法拖动
   drag?: boolean
 }
 
@@ -161,7 +168,9 @@ export const Upload: FC<UploadProps> = (props) => {
       return [_file, ...prevList]
     })
     const formData = new FormData()
+    // 上传文件,这个应该是一个写死的值，自定义name
     formData.append(name || 'file', file)
+    // 添加自定义data,比如token键值对
     if (data) {
       Object.keys(data).forEach((key) => {
         formData.append(key, data[key])
@@ -170,10 +179,11 @@ export const Upload: FC<UploadProps> = (props) => {
     axios
       .post(action, formData, {
         headers: {
+          // 完成添加自定义头部
           ...headers,
           'Content-Type': 'multipart/form-data',
         },
-        withCredentials,
+        withCredentials, //axios是否携带cookie
         onUploadProgress: (e) => {
           let percentage = Math.round((e.loaded * 100) / e.total) || 0
           if (percentage < 100) {
@@ -217,9 +227,11 @@ export const Upload: FC<UploadProps> = (props) => {
         style={{ display: 'inline-block' }}
         onClick={handleClick}
       >
+        {/* 是否可以拖动 */}
         {drag ? (
           <Dragger
             onFile={(files) => {
+              // 传入,子组件给父组件传递files,完成整个的上传过程
               uploadFiles(files)
             }}
           >

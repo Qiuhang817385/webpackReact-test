@@ -148,7 +148,9 @@ const filePromise = (file: File) => {
 
 
 
-## 进阶
+## 进阶,这个需求其实不难,想的太难了,还是基础差
+
+
 
 ![image-20200615233410431](C:/Users/Artificial/AppData/Roaming/Typora/typora-user-images/image-20200615233410431.png)
 
@@ -158,7 +160,78 @@ const filePromise = (file: File) => {
 
 
 
+## 怎么添加自定义header?
+
+传递文件只能使用form-data数据格式
+
+
+
+
+
+## 怎么添加name属性
+
+```js
+ // 上传文件,这个应该是一个写死的值
+// 上传文件,这个应该是一个写死的值
+// 上传文件,这个应该是一个写死的值
+// 上传文件,这个应该是一个写死的值
+    formData.append(name || 'file', file)
+后台获取,通过file方法获取
+```
+
+
+
+## 怎么添加data属性
+
+比如添加token
+
+
+
+
+
+## 怎么添加本身约束
+
+
+
 
 
 ## 发送post是否携带cookie
 
+with-credentials
+
+
+
+![image-20200616001245263](C:/Users/Artificial/AppData/Roaming/Typora/typora-user-images/image-20200616001245263.png)
+
+
+
+
+
+![image-20200615233655271](C:/Users/Artificial/AppData/Roaming/Typora/typora-user-images/image-20200615233655271.png)
+
+
+
+## 拖动
+
+```js
+ <div 
+      className={klass}
+      onDragOver={e => { handleDrag(e, true)}}
+      onDragLeave={e => { handleDrag(e, false)}}
+      onDrop={handleDrop}
+    >
+```
+
+
+
+
+
+![image-20200616002332370](C:/Users/Artificial/AppData/Roaming/Typora/typora-user-images/image-20200616002332370.png)
+
+
+
+
+
+## 测试模拟axios
+
+![image-20200616003650514](C:/Users/Artificial/AppData/Roaming/Typora/typora-user-images/image-20200616003650514.png)
