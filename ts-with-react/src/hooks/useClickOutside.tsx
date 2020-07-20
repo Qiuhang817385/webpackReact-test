@@ -17,3 +17,5 @@ function useClickOutside(ref: RefObject<HTMLElement>, handler: Function) {
 }
 
 export default useClickOutside
+
+// shouldComponentUpdate

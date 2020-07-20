@@ -24,7 +24,7 @@ let p1: Partial<Person> = {
   name: '123',
   age: 1,
 }
-
+console.log('p1', p1);
 let getName: (name: string) => string = () => {
   return name + '123'
 }

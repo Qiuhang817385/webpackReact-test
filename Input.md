@@ -197,6 +197,19 @@ handleSelect设置成false，不再请求
 
 handelchange设置成true，请求
 
+在useEffect当中准备异步调用一个数据的时候加一个判断
+
+triggerSearch.current
+
+```js
+// 异步获取数据
+  useEffect(() => {
+    // 修复Bug
+    if (debouncedValue && triggerSearch.current) {
+```
+
+
+
 
 
 ## 点击外部，消失，这个需求挺常见
